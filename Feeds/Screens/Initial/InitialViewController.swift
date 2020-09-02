@@ -9,10 +9,44 @@
 import UIKit
 
 class InitialViewController: UIViewController {
+    
+    
+    // MARK: - Lifecycle -
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .backgroundColor
+        setupUI()
     }
 
+}
+
+
+// MARK: - UI setup functions -
+
+extension InitialViewController {
+    
+    private func setupUI() {
+        view.backgroundColor = .backgroundColor
+        setupLogoImageView()
+        setupBaseViewController()
+    }
+    
+    private func setupLogoImageView() {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = .systemRed
+        view.addSubview(imageView)
+        imageView.centerInSuperview()
+        imageView.width(150)
+        imageView.height(150)
+    }
+    
+    private func setupBaseViewController() {
+        let controller = FeedsListViewController()
+        let nav = UINavigationController(rootViewController: controller)
+        nav.modalPresentationStyle = .fullScreen
+        nav.modalTransitionStyle = .crossDissolve
+        DispatchQueue.main.async { self.present(nav, animated: true, completion: nil) }
+    }
+    
 }
