@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,11 @@
 		2ECDCEA724FFF69400450B42 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECDCEA624FFF69400450B42 /* InitialViewController.swift */; };
 		2ECDCEB024FFFB5100450B42 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECDCEAF24FFFB5100450B42 /* UIColor+Extensions.swift */; };
 		2ECDCEB224FFFBB500450B42 /* FeedsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECDCEB124FFFBB500450B42 /* FeedsListViewController.swift */; };
+		2ECDCEB42500002100450B42 /* FeedBriefCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECDCEB32500002100450B42 /* FeedBriefCollectionViewCell.swift */; };
+		2ECDCEB9250004C000450B42 /* FeedsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECDCEB8250004C000450B42 /* FeedsProvider.swift */; };
+		2ECDCEBC250007A100450B42 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECDCEBB250007A100450B42 /* Post.swift */; };
+		2ECDCEBE250015C900450B42 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECDCEBD250015C900450B42 /* String+Extensions.swift */; };
+		2ECDCEC1250017DA00450B42 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ECDCEC0250017DA00450B42 /* ImageView.swift */; };
 		767FE5927983FB67F127E63A /* Pods_Feeds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 633ABD12E2AB0E530F2330FB /* Pods_Feeds.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +34,11 @@
 		2ECDCEA624FFF69400450B42 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		2ECDCEAF24FFFB5100450B42 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		2ECDCEB124FFFBB500450B42 /* FeedsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsListViewController.swift; sourceTree = "<group>"; };
+		2ECDCEB32500002100450B42 /* FeedBriefCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBriefCollectionViewCell.swift; sourceTree = "<group>"; };
+		2ECDCEB8250004C000450B42 /* FeedsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsProvider.swift; sourceTree = "<group>"; };
+		2ECDCEBB250007A100450B42 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		2ECDCEBD250015C900450B42 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		2ECDCEC0250017DA00450B42 /* ImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		633ABD12E2AB0E530F2330FB /* Pods_Feeds.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Feeds.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -67,7 +77,9 @@
 			children = (
 				2ECDCEA024FFF3E000450B42 /* AppDelegate */,
 				2ECDCEA224FFF3F400450B42 /* Assets */,
+				2ECDCEBA250006EE00450B42 /* DataModels */,
 				2ECDCEAE24FFFB2E00450B42 /* Extensions */,
+				2ECDCEB5250001BC00450B42 /* Networking */,
 				2ECDCEA424FFF68100450B42 /* Screens */,
 				2ECDCEA124FFF3EC00450B42 /* Storyboards */,
 				2ECDCEA324FFF40000450B42 /* SupportingFiles */,
@@ -111,9 +123,10 @@
 		2ECDCEA424FFF68100450B42 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				2ECDCEA924FFF8F800450B42 /* FeedDetail */,
-				2ECDCEA824FFF89900450B42 /* FeedsList */,
+				2ECDCEBF250017CB00450B42 /* Common */,
 				2ECDCEA524FFF68700450B42 /* Initial */,
+				2ECDCEA824FFF89900450B42 /* FeedsList */,
+				2ECDCEA924FFF8F800450B42 /* FeedDetail */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -155,6 +168,7 @@
 		2ECDCEAB24FFF91800450B42 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				2ECDCEB32500002100450B42 /* FeedBriefCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -176,9 +190,34 @@
 		2ECDCEAE24FFFB2E00450B42 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				2ECDCEBD250015C900450B42 /* String+Extensions.swift */,
 				2ECDCEAF24FFFB5100450B42 /* UIColor+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2ECDCEB5250001BC00450B42 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				2ECDCEB8250004C000450B42 /* FeedsProvider.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		2ECDCEBA250006EE00450B42 /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+				2ECDCEBB250007A100450B42 /* Post.swift */,
+			);
+			path = DataModels;
+			sourceTree = "<group>";
+		};
+		2ECDCEBF250017CB00450B42 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				2ECDCEC0250017DA00450B42 /* ImageView.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		97A93F5D2DF1E3F5A89649C5 /* Pods */ = {
@@ -187,7 +226,6 @@
 				2DA3B4B09DC90398D2445CFE /* Pods-Feeds.debug.xcconfig */,
 				0E52AACA524CADABD974FCD5 /* Pods-Feeds.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -314,9 +352,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ECDCEB42500002100450B42 /* FeedBriefCollectionViewCell.swift in Sources */,
 				2ECDCE8D24FFF0C300450B42 /* AppDelegate.swift in Sources */,
+				2ECDCEB9250004C000450B42 /* FeedsProvider.swift in Sources */,
 				2ECDCEB024FFFB5100450B42 /* UIColor+Extensions.swift in Sources */,
+				2ECDCEBE250015C900450B42 /* String+Extensions.swift in Sources */,
 				2ECDCEB224FFFBB500450B42 /* FeedsListViewController.swift in Sources */,
+				2ECDCEC1250017DA00450B42 /* ImageView.swift in Sources */,
+				2ECDCEBC250007A100450B42 /* Post.swift in Sources */,
 				2ECDCEA724FFF69400450B42 /* InitialViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
