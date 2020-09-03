@@ -27,11 +27,7 @@ class FeedsListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        
-        FeedsProvider.getAll { posts in
-            self.allFeeds = posts
-            DispatchQueue.main.async { self.collectionView.reloadData() }
-        }
+        getAllFeeds()
     }
 
 }
@@ -45,6 +41,9 @@ extension FeedsListViewController {
         title = "Swift News"
         view.backgroundColor = .backgroundColor
         setupCollectionView()
+        
+        let refreshButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(onPressRefresh))
+        self.navigationItem.rightBarButtonItem = refreshButton
     }
     
     private func setupCollectionView() {
@@ -65,6 +64,34 @@ extension FeedsListViewController {
 }
 
 
+// MARK: - Button functions -
+
+extension FeedsListViewController {
+    
+    @objc private func onPressRefresh() {
+        getAllFeeds()
+    }
+}
+
+
+// MARK: - Network functions -
+
+extension FeedsListViewController {
+    
+    private func getAllFeeds() {
+        DispatchQueue.main.async { self.view.showLoader(message: "Loading feeds") }
+        FeedsProvider.getAll({ feeds in
+            self.allFeeds = feeds
+            DispatchQueue.main.async { self.view.dismissLoader(); self.collectionView.reloadData() }
+            
+        }) { errorMessage in
+            self.showAlert(title: "Error", message: errorMessage)
+            DispatchQueue.main.async { self.view.dismissLoader() }
+        }
+    }
+}
+
+
 // MARK: - Collection view data source -
 
 extension FeedsListViewController: UICollectionViewDataSource {
@@ -74,6 +101,17 @@ extension FeedsListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if allFeeds.isEmpty {
+            let label = UILabel()
+            label.font = .systemFont(ofSize: 15, weight: .regular)
+            label.textColor = .grayColor
+            label.textAlignment = .center
+            label.text = "No feeds"
+            collectionView.backgroundView = label
+            return 0
+        }
+        
+        collectionView.backgroundView = nil
         return allFeeds.count
     }
     

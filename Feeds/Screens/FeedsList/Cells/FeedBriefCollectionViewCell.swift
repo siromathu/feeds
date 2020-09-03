@@ -42,7 +42,7 @@ extension FeedBriefCollectionViewCell {
     private func setupContainerView() {
         guard containerView == nil else { return }
         containerView = UIView()
-        containerView.backgroundColor = .tertiaryBackgroundColor
+        containerView.backgroundColor = .secondaryBackgroundColor
         containerView.layer.cornerRadius = 8
         contentView.addSubview(containerView)
         containerView.edgesToSuperview(insets: TinyEdgeInsets(top: 8, left: 8, bottom: 8, right: 8))
