@@ -39,15 +39,11 @@ class ImageView: UIImageView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        self.setupUI()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.setupUI()
-    }
-    
-    override init(image: UIImage?) {
-        super.init(image: image)
         self.setupUI()
     }
     

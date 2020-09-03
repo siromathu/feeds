@@ -19,34 +19,59 @@ class FeedBriefCollectionViewCell: UICollectionViewCell {
     
     var containerView: UIView!
     
+    var contentStack: UIStackView!
+    
     var titleLabel: UILabel!
     
     var thumbnailImage: ImageView!
     
-    // MARK: - UI setup functions -
+}
+
+
+// MARK: - UI setup functions -
+
+extension FeedBriefCollectionViewCell {
     
     func setupUI() {
-        if containerView == nil {
-            containerView = UIView()
-            contentView.addSubview(containerView)
-            containerView.edgesToSuperview(insets: TinyEdgeInsets(top: 5, left: 16, bottom: 5, right: 16))
-        }
-        
-        if thumbnailImage == nil {
-            thumbnailImage = ImageView()
-            thumbnailImage.contentMode = .scaleAspectFit
-            containerView.addSubview(thumbnailImage)
-            thumbnailImage.edgesToSuperview()
-        }
-        
-        if titleLabel == nil {
-            titleLabel = UILabel()
-            titleLabel.font = UIFont.systemFont(ofSize: 14, weight: .medium)
-            titleLabel.textColor = .primaryLabelColor
-            titleLabel.numberOfLines = 0
-            titleLabel.lineBreakMode = .byWordWrapping
-            containerView.addSubview(titleLabel)
-            titleLabel.edgesToSuperview()
-        }
+        setupContainerView()
+        setupContentStack()
+        setupTitleLabel()
+        setupThumbnailImageView()
+    }
+    
+    private func setupContainerView() {
+        guard containerView == nil else { return }
+        containerView = UIView()
+        containerView.backgroundColor = .tertiaryBackgroundColor
+        containerView.layer.cornerRadius = 8
+        contentView.addSubview(containerView)
+        containerView.edgesToSuperview(insets: TinyEdgeInsets(top: 8, left: 8, bottom: 8, right: 8))
+    }
+    
+    private func setupContentStack() {
+        guard contentStack == nil else { return }
+        contentStack = UIStackView()
+        contentStack.axis = .vertical
+        contentStack.spacing = 8
+        containerView.addSubview(contentStack)
+        contentStack.edgesToSuperview(insets: TinyEdgeInsets(top: 8, left: 8, bottom: 8, right: 8))
+    }
+    
+    private func setupTitleLabel() {
+        guard titleLabel == nil else { return }
+        titleLabel = UILabel()
+        titleLabel.font = .systemFont(ofSize: 14, weight: .medium)
+        titleLabel.textColor = .primaryLabelColor
+        titleLabel.numberOfLines = 0
+        titleLabel.lineBreakMode = .byWordWrapping
+        contentStack.addArrangedSubview(titleLabel)
+    }
+    
+    private func setupThumbnailImageView() {
+        guard thumbnailImage == nil else { return }
+        thumbnailImage = ImageView()
+        thumbnailImage.contentMode = .center
+        thumbnailImage.clipsToBounds = true
+        contentStack.addArrangedSubview(thumbnailImage)
     }
 }
