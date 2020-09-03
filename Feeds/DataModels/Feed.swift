@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import ObjectMapper
 
-struct Feed: Codable {
+struct Feed: Mappable {
     
     var title: String?
     
@@ -28,9 +29,14 @@ struct Feed: Codable {
         return body != nil && !body!.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
     
-    var getBody: String? {
-        return body ?? title
+    init?(map: Map) { }
+
+    mutating func mapping(map: Map) {
+        title         <- map["data.title"]
+        body  <- map["data.selftext"]
+        thumbnail  <- map["data.thumbnail"]
+        thumbnailWidth <- map["data.thumbnail_width"]
+        thumbnailHeight <- map["data.thumbnail_height"]
     }
     
-    init() { }
 }

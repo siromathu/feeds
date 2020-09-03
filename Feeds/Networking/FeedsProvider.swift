@@ -9,28 +9,36 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import ObjectMapper
 
 class FeedsProvider {
     
-    class func getAll(_ completion: @escaping (([Post]) -> Void)) {
+    typealias Completion = (([Feed]) -> Void)
+    
+    typealias Failure = ((Error) -> Void)
+    
+    class func getAll(_ completion: @escaping Completion, _ failure: @escaping Failure) {
         let urlString = "https://www.reddit.com/r/swift/.json"
         AF.request(urlString).responseJSON { response in
-            if let value = response.value {
-                let json = JSON(value)
-                let children = json["data"]["children"].arrayValue
-                
-                var posts = [Post]()
-                for child in children {
-                    var newPost = Post()
-                    newPost.title = child["data"]["title"].string
-                    newPost.thumbnail = child["data"]["thumbnail"].string
-                    newPost.thumbnailWidth = child["data"]["thumbnail_width"].double
-                    newPost.thumbnailHeight = child["data"]["thumbnail_height"].double
-                    posts.append(newPost)
+            switch response.result {
+            case .success:
+                //to get JSON return value
+                guard let responseJSON = response.value as? [String: Any] else {
+                    return
                 }
                 
-                debugPrint(posts.count)
-                completion(posts)
+                guard let data = responseJSON["data"] as? [String: Any],
+                    let children = data["children"] as? [[String: Any]] else {
+                    return
+                }
+                
+                let feeds = Mapper<Feed>().mapArray(JSONArray: children)
+//                debugPrint(feeds.map({ $0.title }))
+                completion(feeds)
+                
+            case .failure(let error):
+//                failure(0,"Error \(error)")
+                break
             }
         }
     }

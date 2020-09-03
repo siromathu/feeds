@@ -23,5 +23,85 @@
             </objects>
             <point key="canvasLocation" x="139" y="128"/>
         </scene>
+        <!--Feed Detail View Controller-->
+        <scene sceneID="frz-Tn-dAJ">
+            <objects>
+                <viewController storyboardIdentifier="FeedDetailViewController" id="8af-bK-eWa" customClass="FeedDetailViewController" customModule="Feeds" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8h1-g5-7Tm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Llj-z1-KBa">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedImageViewCell" id="Jfu-6g-ZUH" customClass="FeedImageViewCell" customModule="Feeds" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jfu-6g-ZUH" id="BQl-dc-nVy">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gza-pK-2E4" customClass="ImageView" customModule="Feeds" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="gza-pK-2E4" firstAttribute="leading" secondItem="BQl-dc-nVy" secondAttribute="leading" id="1Cd-em-nH2"/>
+                                                <constraint firstItem="gza-pK-2E4" firstAttribute="top" secondItem="BQl-dc-nVy" secondAttribute="top" id="SKh-kn-KnB"/>
+                                                <constraint firstAttribute="bottom" secondItem="gza-pK-2E4" secondAttribute="bottom" id="Wg0-H8-MLy"/>
+                                                <constraint firstAttribute="trailing" secondItem="gza-pK-2E4" secondAttribute="trailing" id="g2v-a8-3QZ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="feedImageView" destination="gza-pK-2E4" id="cyb-Om-hYf"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FeedBodyDescriptionCell" id="J1N-RK-ZP6" customClass="FeedBodyDescriptionCell" customModule="Feeds" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="72" width="414" height="33"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="J1N-RK-ZP6" id="b1k-aU-lT5">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="33"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jna-zz-8fL">
+                                                    <rect key="frame" x="8" y="8" width="398" height="17"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Jna-zz-8fL" firstAttribute="top" secondItem="b1k-aU-lT5" secondAttribute="top" constant="8" id="48f-Q1-tCO"/>
+                                                <constraint firstItem="Jna-zz-8fL" firstAttribute="leading" secondItem="b1k-aU-lT5" secondAttribute="leading" constant="8" id="NaK-Mu-ppH"/>
+                                                <constraint firstAttribute="trailing" secondItem="Jna-zz-8fL" secondAttribute="trailing" constant="8" id="b9g-zs-uwR"/>
+                                                <constraint firstAttribute="bottom" secondItem="Jna-zz-8fL" secondAttribute="bottom" constant="8" id="weQ-sJ-uIM"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="feedBodyLabel" destination="Jna-zz-8fL" id="ZFA-tf-yfd"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Llj-z1-KBa" firstAttribute="top" secondItem="Lgo-yX-1yH" secondAttribute="top" id="1N1-1B-mIU"/>
+                            <constraint firstItem="Lgo-yX-1yH" firstAttribute="bottom" secondItem="Llj-z1-KBa" secondAttribute="bottom" id="SCo-9r-xqp"/>
+                            <constraint firstItem="Llj-z1-KBa" firstAttribute="leading" secondItem="Lgo-yX-1yH" secondAttribute="leading" id="ZeF-L8-LXF"/>
+                            <constraint firstItem="Lgo-yX-1yH" firstAttribute="trailing" secondItem="Llj-z1-KBa" secondAttribute="trailing" id="hhZ-fh-LpR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Lgo-yX-1yH"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="Llj-z1-KBa" id="llA-wd-Zwg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k6L-Z8-BsB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1007" y="128"/>
+        </scene>
     </scenes>
 </document>

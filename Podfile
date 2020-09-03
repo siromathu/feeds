@@ -15,5 +15,6 @@ target 'Feeds' do
   # Networking
   pod 'Alamofire'
   pod 'SwiftyJSON'
+  pod 'ObjectMapper'
   
 end
