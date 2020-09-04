@@ -13,10 +13,10 @@ import ObjectMapper
 
 class FeedsProvider {
     
-    typealias Completion = (([Feed]) -> Void)
-    typealias Failure = ((String?) -> Void)
+    typealias FeedsCompletion = (([Feed]) -> Void)
+    typealias FeedsFailure = ((String?) -> Void)
     
-    class func getAll(_ completion: @escaping Completion, _ failure: @escaping Failure) {
+    class func getAll(_ completion: @escaping FeedsCompletion, _ failure: @escaping FeedsFailure) {
         let urlString = "https://www.reddit.com/r/swift/.json"
         AF.request(urlString).validate(statusCode: 200..<300).responseJSON { response in
             switch response.result {

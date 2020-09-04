@@ -42,6 +42,7 @@ extension UIView {
             let label = UILabel()
             label.text = message
             label.textAlignment = .center
+            label.textColor = .primaryLabelColor
             stack.addArrangedSubview(label)
         }
         
