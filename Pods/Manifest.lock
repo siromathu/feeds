@@ -1,0 +1,34 @@
+PODS:
+  - Alamofire (5.2.1)
+  - ObjectMapper (4.2.0)
+  - SDWebImage (5.8.1):
+    - SDWebImage/Core (= 5.8.1)
+  - SDWebImage/Core (5.8.1)
+  - SwiftyJSON (5.0.0)
+  - TinyConstraints (4.0.1)
+
+DEPENDENCIES:
+  - Alamofire
+  - ObjectMapper
+  - SDWebImage
+  - SwiftyJSON
+  - TinyConstraints
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - ObjectMapper
+    - SDWebImage
+    - SwiftyJSON
+    - TinyConstraints
+
+SPEC CHECKSUMS:
+  Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
+  ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
+  SDWebImage: e3eae2eda88578db0685a0c88597fdadd9433f05
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  TinyConstraints: 8dd91295e56797648c7bc335dd20e1d91ec4c192
+
+PODFILE CHECKSUM: 72f41012a45f9cd87f9f6eeb6450d1831a605e1a
+
+COCOAPODS: 1.8.4
